@@ -1,0 +1,16 @@
+.board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rectangle {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    border-style: solid;
+    border-radius: 3px;
+}
+.letter {
+    font-size: 24px;
+    padding: 10px;
+}
