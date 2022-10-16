@@ -13,15 +13,11 @@
 .letter {
     font-size: 24px;
     padding: 10px;
+    padding-right: 17px;
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto ;
-    grid-auto-flow: dense;
-    padding: 10px;
-  }
-  .grid-item {
-    padding: 4px;
-    font-size: 30px;
-    text-align: center;
-  }
+.word-bank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}

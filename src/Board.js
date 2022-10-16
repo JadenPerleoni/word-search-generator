@@ -65,8 +65,9 @@ function Board() {
     let randomX = Math.floor(Math.random() * NUM_ROWS);
     let randomY = Math.floor(Math.random() * NUM_COLS);
 
+    // Checks if the random number picked a value that will cause a word to
+    // be overwritten. If it will be, it will continue.
     if (checkForOverWrite(randomY)) {
-      console.log("working");
       continue;
     }
     if (randomX >= NUM_ROWS / 2) {
@@ -98,27 +99,39 @@ function Board() {
     }
   }
 
-  
-  // letters.map((items, index) => {
-  //   items.map((subItems, sIndex) => {
+  // Map the entire word search board to totalLetters and create a Letter
+  // component for each character.
+  const totalLetters = letters.map((item, index) =>
+    item.map((subItems, sIndex) => (
+      <Letter key={sIndex} letter={subItems}></Letter>
+    ))
+  );
 
-  console.log(letters);
+  // Map the total words the user is searching for.
+  const totalWords = wordsArr.map((item, index) => <ul key={index}>{item}</ul>);
+
+
   return (
-    <div className="board">
-      <div className="rectangle">
-        {/* <div className = "grid-container">
-          {letters.map((items, index) => {
-            return (
-              <div key = {index} className = "grid-item">
-                {items.map((subItems, sIndex) => {
-                  return <Letter key = {sIndex} letter = {subItems}></Letter>
-                })}
-              </div>
-            );
-          })}
-        </div> */}
-        <Letter letter = {letters}></Letter>
+    <div>
+      <div className="board">
+        <div className="rectangle">
+          <table>
+            <tbody>
+              <tr>{totalLetters[0]}</tr>
+              <tr>{totalLetters[1]}</tr>
+              <tr>{totalLetters[2]}</tr>
+              <tr>{totalLetters[3]}</tr>
+              <tr>{totalLetters[4]}</tr>
+              <tr>{totalLetters[5]}</tr>
+              <tr>{totalLetters[6]}</tr>
+              <tr>{totalLetters[7]}</tr>
+              <tr>{totalLetters[8]}</tr>
+              <tr>{totalLetters[9]}</tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+      <div className="word-bank">Your words are: {totalWords}</div>
     </div>
   );
 }

@@ -1,12 +1,28 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import './board.css';
-
+import "./board.css";
+import { useState } from "react";
 
 function Letter(props) {
-    const numWords = 5;
-  return <div className="letter">
-    {props.letter}
-  </div>;
+  const [isPicking, setIsPicking] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleClick = () => {
+    setIsPicking((current) => !current);
+  };
+  const changeColor = (e) => {
+
+    if (isPicking) e.target.style.background = 'red';
+  }
+
+  return (
+    <th
+      style={{ backgroundColor: isPicking ? "green" : "" }}
+      className="letter"
+      onClick={handleClick}
+      onMouseOver={changeColor}
+    >
+      {props.letter}
+    </th>
+  );
 }
 export default Letter;
