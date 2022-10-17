@@ -21,3 +21,9 @@
     justify-content: center;
     padding: 5px;
 }
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
