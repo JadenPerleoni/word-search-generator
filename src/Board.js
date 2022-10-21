@@ -53,7 +53,7 @@ function Board() {
 
   const wordsArr = randomWords({ exactly: NUM_WORDS, maxLength: 5 });
 
-  // Check for vertical ow's.
+  // TODO: Check for vertical overwrites.
   const checkForOverWrite = (yNum, xNum, direction) => {
     debugger;
     switch (direction) {
@@ -66,7 +66,7 @@ function Board() {
         break;
       case 1:
         for (let i = 0; i < NUM_COLS; i++) {
-          if (letters[i][yNum] !== "") {
+          if (letters[i][xNum] !== "") {
             return true;
           }
         }
@@ -80,8 +80,9 @@ function Board() {
     // TODO: Write words vertically.
     let randomX = Math.floor(Math.random() * NUM_ROWS);
     let randomY = Math.floor(Math.random() * NUM_COLS);
+    let length = wordsArr[k].length;
 
-    // Picks a number between 0 and 3.
+    // Picks a random number between 0 and 1.
     let randomDir = Math.floor(Math.random() * NUM_DIRECTIONS);
 
     // Checks if the random number picked a value that will cause a word to
@@ -97,13 +98,13 @@ function Board() {
       case 0:
         if (randomX >= NUM_ROWS / 2) {
           // Writing word backwards
-          for (let i = 0; i <= wordsArr[k].length; i++) {
+          for (let i = 0; i <= length; i++) {
             letters[randomY][randomX] = wordsArr[k].charAt(i).toUpperCase();
             randomX--;
           }
         } else {
           // Write word forwards
-          for (let i = 0; i <= wordsArr[k].length; i++) {
+          for (let i = 0; i <= length; i++) {
             letters[randomY][randomX] = wordsArr[k].charAt(i).toUpperCase();
             randomX++;
           }
@@ -112,7 +113,7 @@ function Board() {
       case 1:
         // Write word upside down
         if (randomY >= NUM_COLS / 2) {
-          for (let i = 0; i <= wordsArr[k].length; i++) {
+          for (let i = 0; i <= length; i++) {
             letters[randomY][randomX] = wordsArr[k].charAt(i).toUpperCase();
             randomY--;
           }
