@@ -52,7 +52,6 @@ export let letters = [
 ];
 
 export const checkForOverWrite = (yNum, xNum, direction) => {
-  debugger;
   switch (direction) {
     case 0:
       for (let i = 0; i < NUM_ROWS; i++) {
@@ -74,7 +73,6 @@ export const checkForOverWrite = (yNum, xNum, direction) => {
 export const wordsArr = randomWords({ exactly: NUM_WORDS, maxLength: 5 });
 
 // Fill the rest of the board with random letters"
-
 export const fillBlanks = () => {
   for (let x = 0; x < NUM_ROWS; x++) {
     for (let y = 0; y < NUM_COLS; y++) {
@@ -90,7 +88,6 @@ export const fillBlanks = () => {
 // Places the letters of the random words at random locations on the board.
 export const placeWords = () => {
   while (k < NUM_WORDS) {
-    debugger;
     // TODO: Write words vertically.
     let randomX = Math.floor(Math.random() * NUM_ROWS);
     let randomY = Math.floor(Math.random() * NUM_COLS);
@@ -143,4 +140,18 @@ export const placeWords = () => {
 
     k++;
   }
+};
+
+export const checkWord = (letter, emptyWord) => {
+  emptyWord = emptyWord.concat(letter.toLowerCase());
+  console.log(emptyWord);
+
+  for (let i = 0; i < wordsArr.length; i++) {
+    if (wordsArr[i] === emptyWord) {
+      // ********* This is currently checking the highlighted word
+      // and seeing if it is in the word bank
+      console.log(wordsArr[i] + 'pog');
+    }
+  }
+  return emptyWord;
 };

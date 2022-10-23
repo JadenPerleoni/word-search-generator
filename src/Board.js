@@ -3,7 +3,6 @@ import Letter from "./Letter";
 import "./board.css";
 import {
   letters,
-  checkForOverWrite,
   fillBlanks,
   placeWords,
   wordsArr,
