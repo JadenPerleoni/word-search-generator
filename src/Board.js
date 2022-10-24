@@ -1,15 +1,17 @@
 import React from "react";
 import Letter from "./Letter";
 import "./board.css";
+import Word from "./Word";
+import { selectedWord } from "./Letter";
+
 import {
   letters,
   fillBlanks,
   placeWords,
   totalWords,
-  wordsArr
+  wordsArr,
 } from "./Helpers";
 
-// TODO: Clean up code by putting functions in seperate helper file.
 function Board() {
   //Order of logic:
   // 1: Attempt to place words using placeWords()
@@ -26,9 +28,6 @@ function Board() {
       <Letter key={sIndex} letter={subItems}></Letter>
     ))
   );
-
-
-
 
   return (
     <div>
@@ -51,7 +50,15 @@ function Board() {
           </table>
         </div>
       </div>
-      <div className="word-bank">Your words are: {totalWords}</div>
+      <div className="word-bank">Your words are:
+      <Word word = {totalWords[0]} select = {selectedWord}></Word>
+      <Word word = {totalWords[1]}></Word>
+      <Word word = {totalWords[2]}></Word>
+      <Word word = {totalWords[3]}></Word>
+      <Word word = {totalWords[4]}></Word>
+      <Word word = {totalWords[5]}></Word>
+
+      </div>
     </div>
   );
 }

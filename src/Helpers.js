@@ -1,3 +1,5 @@
+import { selectedWord } from "./Letter";
+
 var randomWords = require("random-words");
 
 // Declaring constant variables
@@ -6,7 +8,6 @@ const NUM_ROWS = 10;
 const NUM_COLS = 10;
 const NUM_DIRECTIONS = 2;
 let k = 0;
-export let 
 
 // Array holds all letters of alphabet.
 const alphabetArr = [
@@ -89,7 +90,6 @@ export const fillBlanks = () => {
 // Places the letters of the random words at random locations on the board.
 export const placeWords = () => {
   while (k < NUM_WORDS) {
-    // TODO: Write words vertically.
     let randomX = Math.floor(Math.random() * NUM_ROWS);
     let randomY = Math.floor(Math.random() * NUM_COLS);
     let length = wordsArr[k].length;
@@ -149,18 +149,15 @@ export let totalWords = wordsArr.map((item, index) => (
 
 // ********* This is currently concatinating the highlighted word
 // and checking if it is in the word bank
-export const checkWord = (letter, emptyWord) => {
-  emptyWord = emptyWord.concat(letter.toLowerCase());
-
+export const checkWord = (letter, selectedWord) => {
   debugger;
-  for (let i = 0; i < wordsArr.length; i++) {
-    if (wordsArr[i] === emptyWord) {
+  selectedWord = selectedWord.concat(letter.toLowerCase());
 
-      // TODO: Put a line through the word if a word is highlighted
-      totalWords = wordsArr.map((item, index) => (
-        <ul key={index}>yo</ul>
-      ));
+  for (let i = 0; i < wordsArr.length; i++) {
+    console.log(selectedWord);
+    if (wordsArr[i] === selectedWord) {
+      console.log("w");
     }
   }
-  return emptyWord;
+  return selectedWord;
 };
