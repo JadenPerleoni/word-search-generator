@@ -6,6 +6,7 @@ const NUM_ROWS = 10;
 const NUM_COLS = 10;
 const NUM_DIRECTIONS = 2;
 let k = 0;
+export let 
 
 // Array holds all letters of alphabet.
 const alphabetArr = [
@@ -141,16 +142,24 @@ export const placeWords = () => {
     k++;
   }
 };
+// Map the total words the user is searching for.
+export let totalWords = wordsArr.map((item, index) => (
+  <ul key={index}>{item}</ul>
+));
 
+// ********* This is currently concatinating the highlighted word
+// and checking if it is in the word bank
 export const checkWord = (letter, emptyWord) => {
   emptyWord = emptyWord.concat(letter.toLowerCase());
-  console.log(emptyWord);
 
+  debugger;
   for (let i = 0; i < wordsArr.length; i++) {
     if (wordsArr[i] === emptyWord) {
-      // ********* This is currently checking the highlighted word
-      // and seeing if it is in the word bank
-      console.log(wordsArr[i] + 'pog');
+
+      // TODO: Put a line through the word if a word is highlighted
+      totalWords = wordsArr.map((item, index) => (
+        <ul key={index}>yo</ul>
+      ));
     }
   }
   return emptyWord;

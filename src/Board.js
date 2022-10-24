@@ -5,7 +5,8 @@ import {
   letters,
   fillBlanks,
   placeWords,
-  wordsArr,
+  totalWords,
+  wordsArr
 } from "./Helpers";
 
 // TODO: Clean up code by putting functions in seperate helper file.
@@ -26,11 +27,9 @@ function Board() {
     ))
   );
 
-  // Map the total words the user is searching for.
-  const totalWords = wordsArr.map((item, index) => <ul key={index}>{item}</ul>);
 
-  console.log(letters);
-  console.log(letters[3][2]);
+
+
   return (
     <div>
       <h2>Click the letters!</h2>
