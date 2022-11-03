@@ -1,10 +1,10 @@
 import React from "react";
-import useState from "react";
-import { selectedWord } from "./Letter";
 
 export default function Word(props) {
-  // const [found,setFound] = useState();
-
-  console.log(props.style);
-  return <div style={{textDecoration: props.style}}>{props.word}</div>;
+  return (
+    <div style={{padding: '20px'}}>
+      <h3 style={{ textDecoration: props.style }}>{props.word}</h3>
+      
+    </div>
+  );
 }

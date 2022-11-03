@@ -1,5 +1,3 @@
-import { selectedWord } from "./Letter";
-
 var randomWords = require("random-words");
 
 // Declaring constant variables
@@ -69,6 +67,8 @@ export const checkForOverWrite = (yNum, xNum, direction) => {
         }
       }
       break;
+    default:
+      break;
   }
 };
 
@@ -137,6 +137,8 @@ export const placeWords = () => {
           }
         }
         break;
+      default:
+        break;
     }
 
     k++;
@@ -146,15 +148,3 @@ export const placeWords = () => {
 export let totalWords = wordsArr.map((item, index) => (
   <ul key={index}>{item}</ul>
 ));
-
-// ********* This is currently concatinating the highlighted word
-// and checking if it is in the word bank
-export const checkWord = (letter, selectedWord) => {
-  selectedWord = selectedWord.concat(letter.toLowerCase());
-
-  for (let i = 0; i < wordsArr.length; i++) {
-    if (wordsArr[i] === selectedWord) {
-    }
-  }
-  return selectedWord;
-};
