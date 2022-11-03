@@ -2,7 +2,7 @@ import React from "react";
 import Letter from "./Letter";
 import "./board.css";
 import Word from "./Word";
-import { selectedWord } from "./Letter";
+import { useState } from "react";
 
 import {
   letters,
@@ -12,7 +12,10 @@ import {
   wordsArr,
 } from "./Helpers";
 
+let wordFound = "";
 function Board() {
+  const [isFound, setIsFound] = useState(false);
+
   //Order of logic:
   // 1: Attempt to place words using placeWords()
   // 2: Call fillblanks() to fill the rest of the board.
@@ -21,43 +24,54 @@ function Board() {
 
   fillBlanks();
 
+  const handleClick = (e) => {
+    setIsFound((current) => !current);
+    wordFound += e.target.innerText.toLowerCase();
+  };
+
   // Map the entire word search board to totalLetters and create a Letter
   // component for each character.
-  const totalLetters = letters.map((item, index) =>
-    item.map((subItems, sIndex) => (
-      <Letter key={sIndex} letter={subItems}></Letter>
-    ))
-  );
+  // const totalLetters = letters.map((item, index) =>
 
+  //   item.map((subItems, sIndex) => (
+  //     <Letter key={sIndex} letter={subItems} onClick={handleClick()} ></Letter>
+  //   ))
+  // );
   return (
     <div>
       <h2>Click the letters!</h2>
       <div className="board">
         <div className="rectangle">
           <table>
-            <tbody>
-              <tr>{totalLetters[0]}</tr>
-              <tr>{totalLetters[1]}</tr>
-              <tr>{totalLetters[2]}</tr>
-              <tr>{totalLetters[3]}</tr>
-              <tr>{totalLetters[4]}</tr>
-              <tr>{totalLetters[5]}</tr>
-              <tr>{totalLetters[6]}</tr>
-              <tr>{totalLetters[7]}</tr>
-              <tr>{totalLetters[8]}</tr>
-              <tr>{totalLetters[9]}</tr>
+            <tbody onClick={handleClick}>
+              {letters.map((items, index) => {
+                return (
+                  <tr key={index}>
+                    {items.map((subItems, sIndex) => {
+                      return <Letter key={sIndex} letter={subItems}></Letter>;
+                    })}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       </div>
-      <div className="word-bank">Your words are:
-      <Word word = {totalWords[0]} select = {selectedWord}></Word>
-      <Word word = {totalWords[1]}></Word>
-      <Word word = {totalWords[2]}></Word>
-      <Word word = {totalWords[3]}></Word>
-      <Word word = {totalWords[4]}></Word>
-      <Word word = {totalWords[5]}></Word>
-
+      <div className="word-bank">
+        Your words are:
+        {/* <h1
+          style={{
+            textDecoration:
+              wordFound === wordsArr[0]
+                ? "line-through"
+                : console.log(wordFound),
+          }}
+        >
+          {wordsArr[0]}{" "}
+        </h1> */}
+        <Word word={wordsArr[0]} style = {wordFound === wordsArr[0]
+                ? "line-through"
+                : console.log(wordFound)}></Word>
       </div>
     </div>
   );

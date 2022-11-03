@@ -150,13 +150,10 @@ export let totalWords = wordsArr.map((item, index) => (
 // ********* This is currently concatinating the highlighted word
 // and checking if it is in the word bank
 export const checkWord = (letter, selectedWord) => {
-  debugger;
   selectedWord = selectedWord.concat(letter.toLowerCase());
 
   for (let i = 0; i < wordsArr.length; i++) {
-    console.log(selectedWord);
     if (wordsArr[i] === selectedWord) {
-      console.log("w");
     }
   }
   return selectedWord;
