@@ -68,8 +68,10 @@ function Board() {
   return (
     <div>
 
-      <h2 style={{display: gameWon ? 'none' : ''}}>Click the letters!</h2>
-      <h2 style={{display: gameWon ? '' : 'none'}}>You won!</h2>
+      <h2>
+        {gameWon ? 'You win!' : 'Click the letters!'}
+      </h2>
+    
 
       <div className="board">
         <div className="rectangle">

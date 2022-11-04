@@ -72,7 +72,9 @@ export const checkForOverWrite = (yNum, xNum, direction) => {
   }
 };
 
-export const wordsArr = randomWords({ exactly: NUM_WORDS, maxLength: 5 });
+// Selects five random words that are 5 characters long, and stores them in
+// wordsArr.
+export const wordsArr = randomWords({ exactly: NUM_WORDS, maxLength: 6 });
 
 // Fill the rest of the board with random letters"
 export const fillBlanks = () => {
